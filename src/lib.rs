@@ -127,5 +127,13 @@ mod tests {
 				mask!(W C M W W)
 			);
 		}
+
+		#[test]
+		fn crane_word() {
+			assert_eq!(
+				Correctness::compute("crane", "break"),
+				mask!(W C M M W)
+			);
+		}
 	}
 }
