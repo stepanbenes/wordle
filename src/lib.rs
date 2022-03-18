@@ -55,10 +55,10 @@ pub trait Guesser {
 
 pub fn play<G: Guesser>(answer: &'static str, mut guesser: G) -> Option<usize> {
 	let mut history = Vec::new();
-	for i in 0.. { // TODO: limit the number of guesses (wordle allows 6 guesses)
+	for i in 0..6 { // wordle allows 6 guesses
 		let guess = guesser.guess(&history[..]);
 		if guess == answer {
-			return Some(i);
+			return Some(i + 1);
 		}
 		let correctness = Correctness::compute(answer, &guess);
 		history.push(Guess { word: guess, mask: correctness });
